@@ -1,0 +1,17 @@
+body{
+  background-color:#EE7674;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
