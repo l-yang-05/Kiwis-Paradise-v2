@@ -16,25 +16,23 @@ const HomeSlider = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://i.ytimg.com/vi/287if5nT444/maxresdefault.jpg"
+                    src="https://findjapan.superdelivery.com/wp-content/uploads/2017/10/DSC_0019.jpg"
                     alt="First banner slide"
                 />
                 <Carousel.Caption>
-                    <h3>Welcome!</h3>
-                    <p>Take a tour of Kiwi's paradise!</p>
+                    <h3 className="intro-text">Welcome!</h3>
                 </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://i.ytimg.com/vi/GKGQwpYpOHY/maxresdefault.jpg"
+                    src="https://i.ytimg.com/vi/287if5nT444/maxresdefault.jpg"
                     alt="Second banner slide"
                 />
 
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 className="intro-text">Cute Plushies for a cheap price!</h3>
                 </Carousel.Caption>
             </Carousel.Item>
 
@@ -46,10 +44,7 @@ const HomeSlider = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3>Contact Us!</h3>
-                    <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
+                    <h3 className="intro-text">Contact Us!</h3>
                 </Carousel.Caption>
             </Carousel.Item>
 

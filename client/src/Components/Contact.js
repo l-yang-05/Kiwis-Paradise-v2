@@ -22,11 +22,11 @@ const Contact = () => {
                     <form id="form-val" onSubmit={handleSubmit(onSubmit)}>
 
                         <label htmlFor="fname">Name</label>
-                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 2, pattern: /^[A-Za-z]+$/ })} />
+                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 2 })} />
                         <p className="error-msg">{errors.fullName && 'Please enter in your full name!'}</p>
 
                         <label htmlFor="mail">Email Address</label>
-                        <input type="text" placeholder="Email address" name="email" id="mail" ref={register({ required: true, pattern: /^\S+@\.com+$/i })} />
+                        <input type="text" placeholder="Email address" name="email" id="mail" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
                         <p className="error-msg">{errors.email && 'Please enter in a vaild email address!'}</p>
 
                         <label htmlFor="msg">Message</label>

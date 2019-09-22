@@ -40,6 +40,7 @@ const Home = () => {
                             Len has served in leadership roles in the nonprofit world, having been the Executive Director of the Oak Park Children's Museum and overseeing numerous programs at a nonprofit in New Haven, Connecticut.
                         </p>
                     </div>
+
                     <div className="card">
                         <img src="http://www.proheadshots.ca/wp-content/uploads/2016/02/VLR-3011-Edit-1024x1024.jpg" alt="David Headshot" />
                         <h3>David Burnington</h3>
@@ -48,9 +49,14 @@ const Home = () => {
                             David has raised venture capital, sold companies and bought companies. He has hands-on experience in a number of our industry verticals and in several functional areas from operations to sales to finance.
                         </p>
                     </div>
+
                 </div>
             </section>
+
         </div>
+
+
     )
 }
+
 export default Home;

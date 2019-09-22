@@ -1,60 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTitle } from 'hookrouter';
 import list from './products.json';
 import FilterBox from './filter';
 
+let typeItem;
+let priceItem;
+let allSelected;
+let filteredList = list;
 
 const Products = () => {
     useTitle("Kiwi's Paradise | Products")
-    const [priceProduct, setPriceProduct] = useState('All');
-    const [typeProduct, setTypeProduct] = useState('All');
-    const [filteredList, setFilteredList] = useState([]);
-    const [arrayList, setArrayList] = useState(list)
+    const [counter, setCounter] = useState(0);
+
+    const filterList = (value, isPrice) => {
+        if (value === 'All' && isPrice) {
+            filteredList = list;
+            allSelected = true;
+            setCounter(counter + 1);
+        } else if (value !== 'All' && isPrice) {
+            allSelected = false;
+            priceItem = Number(value);
+        } else {
+            typeItem = value;
+        }
 
 
-    const filterList = (typeProduct, priceProduct) => {
-        typeProduct === 'filterType' ? setTypeProduct(typeProduct) : setPriceProduct(priceProduct)
-        const filterResult = arrayList.filter((item) => {
-            return (priceProduct === item.price,
-                typeProduct === item.category)
+        const filterResult = list.filter((item) => {
+            if (allSelected) {
+                return item.category;
+            } else if (typeItem && priceItem && !allSelected) {
+                return item.category === typeItem && item.price === priceItem;
+            } else if (typeItem && !allSelected) {
+                return item.category === typeItem;
+            } else if (priceItem && !allSelected) {
+                return item.price === priceItem;
+            }
         });
-        setFilteredList([...filterResult]);
+        filteredList = filterResult;
+        setCounter(counter + 1);
+
     }
 
     // Reset set filtered list to []
-
-    const allInput = (e) => {
-        setFilteredList(list)
-        // if (priceProduct === 'All' && typeProduct === 'All')
-        //     setFilteredList(list);
-    }
-
-
     const clickFilter = (e) => {
-        const typeProduct = e.target.value;
-        const priceProduct = e.target.value;
-        filterList(typeProduct, priceProduct)
+        const value = e.target.value;
+        const isPrice = e.target.name === 'filterPrice';
+        filterList(value, isPrice)
+        debugger;
+
     }
 
     return (
-        <div>
+        <div className="productpg-wrapper">
             <h1>Our Products</h1>
             {/* Extracts the clickFilter from parent and passes it in as its own props */}
-            <FilterBox filter={clickFilter} radioAll={allInput} />
+            <FilterBox filter={clickFilter} />
             <div className="container-products">
 
-                {filteredList.length ? filteredList.map((item, index) => {
-                    return (
-                        <div key={index} className="item">
-                            <img src={item.url} alt={item.alt} />
-                            <h3>{item.name}</h3>
-                            <p> {item.des}</p>
-                            <p> Type: {item.category} </p>
-                            <p className="price"> $ {item.price}.00 </p>
-                        </div>
-                    )
-                }
-                ) : list.map((item, index) => {
+                {filteredList.map((item, index) => {
                     return (
                         <div key={index} className="item">
                             <img src={item.url} alt={item.alt} />
@@ -71,5 +74,4 @@ const Products = () => {
         </div>
     )
 }
-
-export default Products;
+export default Products; 

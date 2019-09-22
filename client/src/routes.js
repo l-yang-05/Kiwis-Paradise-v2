@@ -9,4 +9,4 @@ const routes = {
     "/contact": () => <Contact />
 }
 
-export default routes; 
+export default routes;
