@@ -46,8 +46,6 @@ const Products = () => {
         const value = e.target.value;
         const isPrice = e.target.name === 'filterPrice';
         filterList(value, isPrice)
-        debugger;
-
     }
 
     return (
