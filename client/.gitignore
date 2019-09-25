@@ -2,8 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
-../routes/.env
+.env
 
 # misc
 .DS_Store
