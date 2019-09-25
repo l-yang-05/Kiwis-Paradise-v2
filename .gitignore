@@ -1,0 +1,8 @@
+# Node modules
+/client/node_modules
+
+# Environment
+/routes/.env
+
+# DS Store
+*/.DS_Store
