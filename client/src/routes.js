@@ -4,7 +4,7 @@ import Products from './Components/Products';
 import Contact from './Components/Contact';
 
 const routes = {
-    "/index": () => <Home />,
+    "/": () => <Home />,
     "/products": () => <Products />,
     "/contact": () => <Contact />
 }

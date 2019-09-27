@@ -37,7 +37,10 @@ const Contact = () => {
                     </form>
                 </fieldset>
             </div>
-
+            <div>
+                <h3>Testimonials</h3>
+                <p>testing</p>
+            </div>
         </div>
     )
 

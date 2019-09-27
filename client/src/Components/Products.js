@@ -1,74 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTitle } from 'hookrouter';
-import list from './products.json';
 import FilterBox from './filter';
-
-let typeItem;
-let priceItem;
-let allSelected;
-let filteredList = list;
 
 const Products = () => {
     useTitle("Kiwi's Paradise | Products")
-    const [counter, setCounter] = useState(0);
 
-    const filterList = (value, isPrice) => {
-        if (value === 'All' && isPrice) {
-            filteredList = list;
-            allSelected = true;
-            setCounter(counter + 1);
-        } else if (value !== 'All' && isPrice) {
-            allSelected = false;
-            priceItem = Number(value);
-        } else {
-            typeItem = value;
+
+    const [products, setProducts] = useState(null)
+    const productsApiCaller = async () => {
+        try {
+            const res = await fetch("api/products");
+            const text = await res.text();
+            const response = text.length ? JSON.parse(text) : {}
+            setProducts(response);
         }
-
-
-        const filterResult = list.filter((item) => {
-            if (allSelected) {
-                return item.category;
-            } else if (typeItem && priceItem && !allSelected) {
-                return item.category === typeItem && item.price === priceItem;
-            } else if (typeItem && !allSelected) {
-                return item.category === typeItem;
-            } else if (priceItem && !allSelected) {
-                return item.price === priceItem;
-            }
-        });
-        filteredList = filterResult;
-        setCounter(counter + 1);
-
+        catch (error) {
+            throw error;
+        }
     }
 
-    // Reset set filtered list to []
-    const clickFilter = (e) => {
-        const value = e.target.value;
-        const isPrice = e.target.name === 'filterPrice';
-        filterList(value, isPrice)
-    }
+    // const filterApiCaller = async () => {
+    //     try {
+    //         const res = await fetch("api/product");
+    //         const text = await res.text();
+    //         const response = text.length ? JSON.parse(text) : {}
+    //         setProducts(response)
+    //     }
+    //     catch (error) {
+    //         throw error
+    //     }
+    // }
+
+    useEffect(() => {
+        productsApiCaller()
+        // filterApiCaller()
+    }, [])
+
 
     return (
         <div className="productpg-wrapper">
             <h1>Our Products</h1>
             {/* Extracts the clickFilter from parent and passes it in as its own props */}
-            <FilterBox filter={clickFilter} />
+            <FilterBox />
             <div className="container-products">
-
-                {filteredList.map((item, index) => {
+                {products && products.map((item, index) => {
                     return (
                         <div key={index} className="item">
-                            <img src={item.url} alt={item.alt} />
-                            <h3>{item.name}</h3>
-                            <p> {item.des}</p>
-                            <p> Type: {item.category} </p>
+                            <img src={item.img} alt={item.alt} />
+                            <h3>{item.product_name}</h3>
+                            <p> {item.product_desc}</p>
+                            <p> Type: {item.product_type} </p>
                             <p className="price"> $ {item.price}.00 </p>
                         </div>
                     )
-                }
-                )}
+                })}
             </div>
-
         </div>
     )
 }
