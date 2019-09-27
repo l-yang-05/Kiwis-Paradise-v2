@@ -1,30 +1,27 @@
 import React from 'react';
 
-const FilterType = ({ filterHandler }) => {
+const FilterType = ({ all, type, price }) => {
 
     return (
         <div className="container-filter">
+            <form>
+                <input type="reset" value="reset" onClick={all}></input>
+            </form>
             <div className="container-type">
                 <h3 className="tag">Filter by Type</h3>
                 <form className="filterButtons">
-                    <select onChange={filterHandler}>
-                        <option></option>
-                        <option className="type" value="animal" id="type-1"  >Animal</option>
-                        <option className="type" value="character" id="type-2" >Character</option>
-                        <option className="type" value="other" id="type-3" >Other</option>
-                    </select>
+                    <input type="button" value="character" onClick={type}></input>
+                    <input type="button" value="animal" onClick={type}></input>
+                    <input type="button" value="other" onClick={type}></input>
                 </form>
             </div>
 
             <div className="container-price">
                 <h3 className="tag">Filter by Price</h3>
                 <form className="filterButtons">
-                    <select>
-                        <option></option>
-                        <option className="price" value="3" id="price-1" >$3.00</option>
-                        <option className="price" value="4" id="price-2">$4.00</option>
-                        <option className="price" value="5" id="price-3">$5.00</option>
-                    </select>
+                    <input type="button" value="3" onClick={price}></input>
+                    <input type="button" value="4" onClick={price}></input>
+                    <input type="button" value="5" onClick={price}></input>
                 </form>
             </div>
         </div>
