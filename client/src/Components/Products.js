@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTitle } from 'hookrouter';
-import FilterBox from './filter';
+import Filter from './Filter';
 
 const Products = () => {
     useTitle("Kiwi's Paradise | Products")
@@ -53,7 +53,7 @@ const Products = () => {
         }
     }
 
-    const testFilter = async (type, price) => {
+    const filterBoth = async (type, price) => {
         const res = await fetch(`api/productfilter?type=${type}&price=${price}`);
         const text = await res.text();
         const response = text.length ? JSON.parse(text) : {}
@@ -66,7 +66,7 @@ const Products = () => {
     // Handles if buttons are selected
     useEffect(() => {
         if (price && type) {
-            testFilter(type, price)
+            filterBoth(type, price)
         }
     }, [type, price])
 
@@ -75,7 +75,7 @@ const Products = () => {
         <div className="productpg-wrapper">
             <h1>Our Products</h1>
             {/* Extracts the clickFilter from parent and passes it in as its own props */}
-            <FilterBox all={productsApiCaller} type={fetchType} price={fetchPrice} />
+            <Filter all={productsApiCaller} type={fetchType} price={fetchPrice} />
             <div className="container-products">
                 {products && products.map((item, index) => {
                     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterType = ({ all, type, price }) => {
+const Filter = ({ all, type, price }) => {
 
     return (
         <div className="container-filter">
@@ -28,4 +28,4 @@ const FilterType = ({ all, type, price }) => {
     )
 }
 
-export default FilterType;
+export default Filter;

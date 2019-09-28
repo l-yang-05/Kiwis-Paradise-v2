@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTitle } from 'hookrouter';
 import useForm from 'react-hook-form';
+import Testimonials from './testimonial';
 
 
 const Contact = () => {
@@ -14,6 +15,23 @@ const Contact = () => {
     console.log(errors);
 
 
+    const [testimonial, setTestimonial] = useState(null)
+    const contactsAPI = async () => {
+        try {
+            const res = await fetch("api/contacts");
+            const text = await res.text();
+            const response = text.length ? JSON.parse(text) : {}
+            setTestimonial(response);
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+    useEffect(() => {
+        contactsAPI()
+    }, [])
+
     return (
         <div className="container-contact">
             <h1>Contact Us!</h1>
@@ -21,12 +39,12 @@ const Contact = () => {
                 <fieldset>
                     <form id="form-val" onSubmit={handleSubmit(onSubmit)}>
 
-                        <label htmlFor="fname">Name</label>
-                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 2 })} />
-                        <p className="error-msg">{errors.fullName && 'Please enter in your full name!'}</p>
+                        <label htmlFor="fname">Full Name</label>
+                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 5, pattern: /[a-zA-z']/ })} />
+                        <p className="error-msg">{errors.fullName && "Please enter in your full name! Make sure you're only submitting in letter characters in this field!!!"}</p>
 
                         <label htmlFor="mail">Email Address</label>
-                        <input type="text" placeholder="Email address" name="email" id="mail" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+                        <input type="text" placeholder="Email address" name="email" id="mail" ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
                         <p className="error-msg">{errors.email && 'Please enter in a vaild email address!'}</p>
 
                         <label htmlFor="msg">Message</label>
@@ -37,6 +55,7 @@ const Contact = () => {
                     </form>
                 </fieldset>
             </div>
+            <Testimonials data={testimonial} />
         </div>
     )
 
