@@ -22,16 +22,16 @@ CREATE TABLE IF NOT EXISTS `ecom_db`.`Contacts` (
   PRIMARY KEY (`contacts_id`));
 
 INSERT INTO `ecom_db`.`Contacts`(full_name, email, message)
-VALUES ('Marvin Thapa Renteral', 'mar_bin@gmail.com', 'Poggers!'),
-	   ('Anh Truong', 'aTruong@hotmail.com', 'Such cute products :3'),
-       ('Alina Madsourvong', 'usa09@gmail.com','I demand more cute things.'),
-       ('Nakia Isler', 'izl3r18@gmail.com', 'I want more Pokemon.'),
+VALUES ('Marvin Thapa Renteral', 'mar_bin@gmail.com', 'Poggers! Thanks for the super fast delivery!!!'),
+	   ('Anh Truong', 'aTruong@hotmail.com', 'Such cute products :3! Would buy from you again soon!!'),
+       ('Alina Madsourvong', 'usa09@gmail.com','I demand more cute things. I love the store and the aesthetics.~'),
+       ('Nakia Isler', 'izl3r18@gmail.com', 'I love the cheap prices! Makes me want to buy more!'),
        ('Amirah Young', 'halsey_002@hotmail.com', 'I love your store and Halsey.'),
-       ('Phuong Nguyen', 'P_Nguyen24@hotmail.com', 'Can you offer more shounen stuff in store please?'),
-       ('Scarlett Law', 'cupcakes_cookies@gmail.com', 'OMG I WANT MORE STUFF PLEASE!'),
-       ('Harrison Law', 'h_law_ninja@gmail.com', 'FLIP FLOP I WANT MORE YEET'),
+       ('Phuong Nguyen', 'P_Nguyen24@hotmail.com', 'Such fast delivery and for a cheap price too!'),
+       ('Scarlett Law', 'cupcakes_cookies@gmail.com', 'OMG I WANT MORE STUFF PLEASE! I LOVE THE STORE!'),
+       ('Harrison Law', 'h_law_ninja@gmail.com', 'FLIP FLOP I WANT MORE YEET! I love all of the products.'),
        ('Nickie Tang', 'a_3y3_nT@gmail.com', 'The products you have here are cute.'),
-       ('Kiana Truong', 'k_truong_304@hotmail.com', 'I WANT MORE CUTE STUFF PLEASE!');
+       ('Kiana Truong', 'k_truong_304@hotmail.com', 'I WANT MORE CUTE STUFF PLEASE! I LOVE THE PRICES AND DELIVERY!');
 
 SELECT * FROM `ecom_db`.`Contacts`;
 -- -----------------------------------------------------
@@ -163,7 +163,7 @@ VALUES (5.00, 1, 'USD', NULL),
        (4.00, 7, 'USD', NULL),
        (5.00, 8, 'USD', NULL),
        (3.00, 9,'USD', NULL),
-       (5.00, 10, 'USD', NULL),
+       (3.00, 10, 'USD', NULL),
        (5.00, 11, 'USD', NULL),
        (4.00, 12, 'USD', NULL)
        ;   
@@ -221,6 +221,17 @@ SELECT ecom_db.Products.products_id, ecom_db.Products.product_name, ecom_db.Prod
 ecom_db.Products.img, ecom_db.Products.alt, ecom_db.Price.price, ecom_db.Price.currency
  FROM ecom_db.Price
 	INNER JOIN ecom_db.Products
-    ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id ;
+    ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id
+    WHERE ecom_db.Products.product_type="other" && ecom_db.Price.price = 4;
+    
+
+SELECT * FROM ecom_db.Contacts ORDER BY RAND() LIMIT 3;
+    
+SELECT ecom_db.Products.product_name, ecom_db.Products.products_id, ecom_db.Price.price, SUM(ecom_db.Price.price  * .08) AS Invoice
+ FROM ecom_db.Price
+	INNER JOIN ecom_db.Products
+    ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id
+    WHERE ecom_db.Price.Products_products_id = @ecom_db.Products.products_id
+    GROUP BY ecom_db.Products.products_id;    
     
     

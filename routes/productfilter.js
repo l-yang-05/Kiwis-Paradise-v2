@@ -28,11 +28,11 @@ router.get('/productfilter', (req, res) => {
     }
     connection.query(sqlQuery, [],
         (err, data) => {
-            if (err) throw new Error(`${req.query.type} is an invalid type. Please enter in either these instead: "other", "animal", "character"`)
+            if (err) {
+                res.status(404).send({ error: `${req.query.type} is an invalid type. Please enter in either these instead: "other", "animal", "character"` })
+            }
             res.json(data)
         })
-
-}
-)
+})
 
 module.exports = router

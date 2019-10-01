@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/l-yang-05/Kiwis-Paradise-v2#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",

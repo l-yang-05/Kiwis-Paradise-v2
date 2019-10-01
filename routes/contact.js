@@ -14,9 +14,10 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err
 })
+
 router.get('/contacts', (req, res) => {
-    connection.query("SELECT * FROM ecom_db.Contacts", (err, data) => {
-        console.log(err)
+    connection.query("SELECT * FROM ecom_db.Contacts ORDER BY RAND() LIMIT 3", (err, data) => {
+        if (err) throw new Error(`${req.statusCode}: Page did not load properly`)
         res.json(data)
     })
 })

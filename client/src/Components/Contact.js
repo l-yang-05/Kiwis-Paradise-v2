@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTitle } from 'hookrouter';
 import useForm from 'react-hook-form';
-import Testimonials from './testimonial';
+import Testimonial from './Testimonial';
 
 
 const Contact = () => {
@@ -37,10 +37,10 @@ const Contact = () => {
             <h1>Contact Us!</h1>
             <div className="form-wrapper">
                 <fieldset>
-                    <form id="form-val" onSubmit={handleSubmit(onSubmit)}>
+                    <form id="form-val" onSubmit={handleSubmit(onSubmit)} action="api/newContact" method="Post">
 
                         <label htmlFor="fname">Full Name</label>
-                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 5, pattern: /[a-zA-z']/ })} />
+                        <input type="text" placeholder="Full Name" name="fullName" id="fname" ref={register({ required: true, min: 5, pattern: /^[a-zA-z']([^0-9]*)$/ })} />
                         <p className="error-msg">{errors.fullName && "Please enter in your full name! Make sure you're only submitting in letter characters in this field!!!"}</p>
 
                         <label htmlFor="mail">Email Address</label>
@@ -55,7 +55,7 @@ const Contact = () => {
                     </form>
                 </fieldset>
             </div>
-            <Testimonials data={testimonial} />
+            <Testimonial data={testimonial} />
         </div>
     )
 

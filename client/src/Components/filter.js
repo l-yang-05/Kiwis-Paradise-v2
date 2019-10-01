@@ -4,13 +4,16 @@ const Filter = ({ all, type, price }) => {
 
     return (
         <div className="container-filter">
-            <form>
-                <input type="reset" value="reset" onClick={all}></input>
-            </form>
+            <div className="container-type">
+                <form>
+                    <h3>Reset Filter</h3>
+                    <input type="button" value="reset" onClick={all}></input>
+                </form>
+            </div>
             <div className="container-type">
                 <h3 className="tag">Filter by Type</h3>
                 <form className="filterButtons">
-                    <input type="button" value="character" onClick={type}></input>
+                    <input type="button" value="tomato" onClick={type}></input>
                     <input type="button" value="animal" onClick={type}></input>
                     <input type="button" value="other" onClick={type}></input>
                 </form>
