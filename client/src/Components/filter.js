@@ -13,7 +13,7 @@ const Filter = ({ all, type, price }) => {
             <div className="container-type">
                 <h3 className="tag">Filter by Type</h3>
                 <form className="filterButtons">
-                    <input type="button" value="tomato" onClick={type}></input>
+                    <input type="button" value="character" onClick={type}></input>
                     <input type="button" value="animal" onClick={type}></input>
                     <input type="button" value="other" onClick={type}></input>
                 </form>

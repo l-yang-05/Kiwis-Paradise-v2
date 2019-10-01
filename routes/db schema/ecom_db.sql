@@ -222,16 +222,19 @@ ecom_db.Products.img, ecom_db.Products.alt, ecom_db.Price.price, ecom_db.Price.c
  FROM ecom_db.Price
 	INNER JOIN ecom_db.Products
     ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id
-    WHERE ecom_db.Products.product_type="other" && ecom_db.Price.price = 4;
+    WHERE ecom_db.Products.product_type=4 && ecom_db.Price.price = 4;
     
 
-SELECT * FROM ecom_db.Contacts ORDER BY RAND() LIMIT 3;
+SELECT * FROM ecom_db.Contacts;
+--  ORDER BY RAND() LIMIT 3;
     
-SELECT ecom_db.Products.product_name, ecom_db.Products.products_id, ecom_db.Price.price, SUM(ecom_db.Price.price  * .08) AS Invoice
+SELECT ecom_db.Products.product_name, ROUND(SUM((ecom_db.Price.price  * .08 * 5) +  ecom_db.Price.price), 2) AS Invoice
  FROM ecom_db.Price
 	INNER JOIN ecom_db.Products
     ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id
-    WHERE ecom_db.Price.Products_products_id = @ecom_db.Products.products_id
-    GROUP BY ecom_db.Products.products_id;    
+	WHERE ecom_db.Products.product_name = "Mochi Mochi Chukaman Cushion";    
+    
+INSERT INTO ecom_db.Contacts(full_name, email, message)
+VALUES ();
     
     

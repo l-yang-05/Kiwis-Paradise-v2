@@ -12,7 +12,8 @@ const PORT = process.env.port || 3001
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.use(helmet())
 app.use(morgan('dev', { stream: accessLogStream }))

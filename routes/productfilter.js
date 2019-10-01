@@ -28,8 +28,8 @@ router.get('/productfilter', (req, res) => {
     }
     connection.query(sqlQuery, [],
         (err, data) => {
-            if (err) {
-                res.status(404).send({ error: `${req.query.type} is an invalid type. Please enter in either these instead: "other", "animal", "character"` })
+            if (err || data.length === 0) {
+                res.status(404).send({ error: `You entered in an invalid query` })
             }
             res.json(data)
         })
