@@ -32,8 +32,7 @@ const Contact = () => {
         }
         console.log(data)
         e.target.reset()
-    }
-    console.log(errors);
+    };
 
 
     const [testimonial, setTestimonial] = useState(null)

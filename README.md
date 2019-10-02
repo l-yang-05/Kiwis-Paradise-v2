@@ -1,20 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Kiwi's Paradise eCommerce V2
 
-## Available Scripts
+This is my third re-edition of my eCommerce website that is centered on selling plushies. This website was made by using React.js, CSS, Bootstrap, node, and express.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm run start` or `npm start`
-
-Runs the app in the development mode and node.js server.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-Node.js Server will run on [http://localhost:3001]
-
-### `npm run test` or `npm test`
-To run tests from the APIs, you will have to go into the `routes` directory and run the command above to test out the endpoints. 
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Clone or download this repo onto your local machine. Once you have done this, install the node packages. You can do this by running ```npm i``` on your command line tool.
 
 
+## Running the app
+
+After you have installed all of the dependencies that are needed for this project, you can open the project up through your command line tool. First be in the root of the directory and then run ```npm run start``` in your command line tool. This will start the server and the react app at the same time.
+
+
+## Stopping the app
+
+To stop running the server and the react app, you can hit ```command + z``` to close both.
+
+
+## Built With
+
+* [React](https://github.com/facebook/react) - The framework used
+* [NodeJS](https://github.com/nodejs/node) - The development for server
+* [Express & Express Router](https://github.com/expressjs/express) - Used to create endpoints
+* [Morgan](https://github.com/expressjs/morgan) - Logging tool
+* [Helmet](https://github.com/helmetjs/helmet) - Provided security
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
