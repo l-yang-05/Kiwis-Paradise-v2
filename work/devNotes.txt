@@ -1,0 +1,7 @@
+## Dev Notes
+
+Future Installment ideas:
+- Testimonials can fade in and out and render comments randomly.
+- Make a slider in react without using bootstrap carousel 
+- Add more endpoints to server
+- Fetch api/productinvoice and connect it to front-end
