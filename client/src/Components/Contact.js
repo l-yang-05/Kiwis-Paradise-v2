@@ -76,8 +76,6 @@ const Contact = () => {
     }, [])
 
 
-
-
     return (
         <div className="container-contact">
             <h1>Contact Us!</h1>

@@ -1,9 +1,12 @@
 import React from 'react';
 
-
-
-
 const Footer = () => {
+    let updateDate = new Date()
+    let year = updateDate.getFullYear()
+    let month = updateDate.getMonth()
+    let day = updateDate.getDay()
+    let fullDate = `${month}/${day}/${year}`
+
     return (
         <footer>
             <div className="social">
@@ -32,7 +35,7 @@ const Footer = () => {
                     <p className="footer-info">Kiwi's Paradise | Copyright @ 2019 | All Rights Reserved.</p>
                 </div>
 
-                <p className="footer-info">Last Updated by: August 16, 2019</p>
+                <p className="footer-info">Last Updated: {fullDate}</p>
             </div>
         </footer>
     )

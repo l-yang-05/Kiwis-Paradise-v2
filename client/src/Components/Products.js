@@ -6,17 +6,20 @@ const Products = () => {
     useTitle("Kiwi's Paradise | Products")
 
 
+
     const [products, setProducts] = useState(null)
     const [price, setPrice] = useState('')
     const [type, setType] = useState('')
+
+
     const productsApiCaller = async () => {
         try {
             const res = await fetch("api/products");
             const text = await res.text();
             const response = text.length ? JSON.parse(text) : {}
             setProducts(response)
+            setPrice('')
             setType('')
-            setPrice('');
         }
         catch (error) {
             throw error;
@@ -58,6 +61,8 @@ const Products = () => {
         const text = await res.text();
         const response = text.length ? JSON.parse(text) : {}
         setProducts(response)
+        setType(type)
+        setPrice(price)
     }
     // Handles default list of products
     useEffect(() => {
@@ -75,7 +80,7 @@ const Products = () => {
         <div className="productpg-wrapper">
             <h1>Our Products</h1>
             {/* Extracts the clickFilter from parent and passes it in as its own props */}
-            <Filter all={productsApiCaller} type={fetchType} price={fetchPrice} />
+            <Filter all={productsApiCaller} filterType={fetchType} filterPrice={fetchPrice} type={type} price={price} />
             <div className="container-products">
                 {products && products.map((item, index) => {
                     return (

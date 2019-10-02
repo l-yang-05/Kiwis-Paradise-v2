@@ -234,7 +234,7 @@ SELECT ecom_db.Products.product_name, ROUND(SUM((ecom_db.Price.price  * .08 * 5)
     ON ecom_db.Price.Products_products_id = ecom_db.Products.products_id
 	WHERE ecom_db.Products.product_name = "Mochi Mochi Chukaman Cushion";    
     
-INSERT INTO ecom_db.Contacts(full_name, email, message)
-VALUES ();
+-- INSERT INTO ecom_db.Contacts(full_name, email, message)
+-- VALUES ();
     
     
