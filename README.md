@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Node.js Server will run on [http://localhost:3001]
 
-### `node server`
+### `npm run test` or `npm test`
 To run tests from the APIs, you will have to go into the `routes` directory and run the command above to test out the endpoints. 
 
 The page will reload if you make edits.<br>
