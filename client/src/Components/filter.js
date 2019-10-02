@@ -14,7 +14,7 @@ const Filter = ({ all, filterType, filterPrice, type, price }) => {
                 <h3 className="tag">Filter by Type</h3>
                 <form className="filterButtons" name="type-drop">
                     <select onChange={filterType} value={type} >
-                        <option value="">--- Select A Type ---</option>
+                        <option selected="true" disabled="disabled" value="">--- Select A Type ---</option>
                         <option value="character">Character</option>
                         <option value="animal">Animal</option>
                         <option value="other">Other</option>
@@ -26,7 +26,7 @@ const Filter = ({ all, filterType, filterPrice, type, price }) => {
                 <h3 className="tag">Filter by Price</h3>
                 <form className="filterButtons" name="price-drop">
                     <select onChange={filterPrice} value={price}>
-                        <option value=" --- Select A Price --- ">--- Select A Price ---</option>
+                        <option selected="true" disabled="disabled" value="">--- Select A Price ---</option>
                         <option value="3">$3.00</option>
                         <option value="4">$4.00</option>
                         <option value="5">$5.00</option>
