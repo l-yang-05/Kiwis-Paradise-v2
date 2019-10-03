@@ -32,7 +32,7 @@ To run the tests for API endpoints run the command ```npm run test```.
 * [Chai](https://github.com/chaijs/chai) - Used for testing application
 * [Concurrently](https://github.com/kimmobrunfeldt/concurrently) - Used to run servers at the same time
 
-##Author
+## Author
 
 * [Lucy Yang](https://github.com/l-yang-05)
 
