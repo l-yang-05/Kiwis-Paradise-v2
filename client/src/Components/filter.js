@@ -1,7 +1,7 @@
 import React from 'react';
 
+// Takes passed in states and functions from parent component (Products pg component)
 const Filter = ({ all, filterType, filterPrice, type, price }) => {
-
     return (
         <div className="container-filter">
             <div className="container-type">
@@ -31,9 +31,6 @@ const Filter = ({ all, filterType, filterPrice, type, price }) => {
                         <option value="4">$4.00</option>
                         <option value="5">$5.00</option>
                     </select>
-                    {/* <input type="button" value="3" onClick={price}></input>
-                    <input type="button" value="4" onClick={price}></input>
-                    <input type="button" value="5" onClick={price}></input> */}
                 </form>
             </div>
         </div>

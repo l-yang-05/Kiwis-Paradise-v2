@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+// Passing state from parent component (Contacts pg component)
 const Testimonial = ({ data }) => {
     return (
         <section className="testimonial">

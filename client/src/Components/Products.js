@@ -5,13 +5,12 @@ import Filter from './Filter';
 const Products = () => {
     useTitle("Kiwi's Paradise | Products")
 
-
-
+    // Setting state to display products and filters
     const [products, setProducts] = useState(null)
     const [price, setPrice] = useState('')
     const [type, setType] = useState('')
 
-
+    // Fetching api/products endpoint to get products data from mysql db
     const productsApiCaller = async () => {
         try {
             const res = await fetch("api/products");
@@ -26,6 +25,7 @@ const Products = () => {
         }
     }
 
+    // Fetching api/productfilter endpoint to get filtered product data from mysql db
     const fetchType = async (e) => {
         e.preventDefault();
         const val = e.target.value;
@@ -41,6 +41,7 @@ const Products = () => {
         }
     }
 
+    // Fetching api/productfilter endpoint to get filtered product data from mysql db
     const fetchPrice = async (e) => {
         e.preventDefault();
         const val = e.target.value;
@@ -56,6 +57,8 @@ const Products = () => {
         }
     }
 
+    //Fetching api/productfilter endpoint to get filtered product data from mysql db
+    // Takes in two parameters which will be taking in state for type and price
     const filterBoth = async (type, price) => {
         const res = await fetch(`api/productfilter?type=${type}&price=${price}`);
         const text = await res.text();
@@ -64,22 +67,23 @@ const Products = () => {
         setType(type)
         setPrice(price)
     }
-    // Handles default list of products
+
+    // Handles default list of products when client goes to products pg component
     useEffect(() => {
         productsApiCaller()
     }, [])
-    // Handles if buttons are selected
+
+    // Handles if both type and price have are true and hold the value from option dropdown values
     useEffect(() => {
         if (price && type) {
             filterBoth(type, price)
         }
     }, [type, price])
 
-
     return (
         <div className="productpg-wrapper">
             <h1>Our Products</h1>
-            {/* Extracts the clickFilter from parent and passes it in as its own props */}
+            {/* Passing state and fetch functions to child component */}
             <Filter all={productsApiCaller} filterType={fetchType} filterPrice={fetchPrice} type={type} price={price} />
             <div className="container-products">
                 {products && products.map((item, index) => {

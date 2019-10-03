@@ -2,7 +2,7 @@
 const router = require('express').Router()
 const mysql = require('mysql')
 
-
+// Connects to mysql db to server
 const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -15,6 +15,7 @@ connection.connect((err) => {
     if (err) throw err
 })
 
+// Defining api route for /api/productfilter
 router.get('/productfilter', (req, res) => {
     const { type, price } = req.query
 

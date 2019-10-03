@@ -2,7 +2,7 @@
 const router = require('express').Router()
 const mysql = require('mysql')
 
-
+// Connects to mysql db to server
 const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -15,6 +15,7 @@ connection.connect((err) => {
     if (err) throw err
 })
 
+// Defining api route for /api/productinvoice
 router.get('/productinvoice', (req, res) => {
     const { name, quantity } = req.query
     const sqlQuery = `SELECT ecom_db.Products.product_name, ROUND(SUM((ecom_db.Price.price * .08 * ${quantity} ) +  ecom_db.Price.price), 2) AS Invoice FROM ecom_db.Price INNER JOIN ecom_db.Products

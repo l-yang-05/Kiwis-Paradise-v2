@@ -323,7 +323,7 @@ textarea {
   display: flex;
   flex-direction: column;
   background-color: snow;
-  width:325px;
+  width:290px;
   height: 150px;
   border-radius: 20px;
   padding: 10px;
@@ -455,7 +455,7 @@ svg:hover{
   }
 
   .profile{
-    width: 230px;
+    width: 215px;
   }
 
 }
@@ -482,7 +482,7 @@ svg:hover{
   }
 
   .profile{
-    width:100%;
+    width:97%;
   }
 
   .card-wrapper {

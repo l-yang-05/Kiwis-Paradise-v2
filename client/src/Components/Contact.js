@@ -7,36 +7,28 @@ import Testimonial from './Testimonial';
 const Contact = () => {
     useTitle("Kiwi's Paradise | Contact");
 
+    // Setting state for testimonial child component
+    const [testimonial, setTestimonial] = useState(null)
+
+    // Unpackaging useForm() object needed for react-hook-form
     const { register, handleSubmit, errors } = useForm();
 
+    // Function handles when form is submitted and sends data to mysql database
     const onSubmit = (data, e) => {
-        const errorFields = [];
+        // Extracts values from input fields in form
         const full_name = document.getElementsByName("full_name")[0].value;
         const email = document.getElementsByName("email")[0].value;
         const message = document.getElementsByName("message")[0].value;
 
-        if (full_name === "") {
-            errorFields.push(full_name)
-        } else if (email === "") {
-            errorFields.push(email)
-        } else if (message === "") {
-            errorFields.push(message)
-        }
-        else if (errorFields.length) {
-            alert(`Please fill out the following fields ${errorFields.join(', ')}`)
-        }
-        else {
-            newContactAPI(full_name, email, message).then(res => {
-                alert(`Thank you ${full_name} for sending us a message!`)
-            })
-        }
+        // Pass the extracted value as a parameter in fetch function that handles POST API
+        newContactAPI(full_name, email, message).then(res => {
+            alert(`Thank you ${full_name} for sending us a message!`)
+        })
         console.log(data)
         e.target.reset()
     };
 
-
-    const [testimonial, setTestimonial] = useState(null)
-
+    // Function fetches api/contacts that is used to get contacts to display onto testimonial component
     const contactsAPI = async () => {
         try {
             const res = await fetch("api/contacts");
@@ -49,6 +41,8 @@ const Contact = () => {
         }
     }
 
+    /* Function fetches the POST API and takes in three parameters. Takes three parameters and assign it as the 
+    res.body to send to api and then to mysql database */
     const newContactAPI = async (full_name, email, message) => {
         try {
             const res = await fetch("api/newContact", {
@@ -70,6 +64,7 @@ const Contact = () => {
         }
     };
 
+    // Necessary for rendering the fetched content to appear on react app
     useEffect(() => {
         contactsAPI()
     }, [])
@@ -95,14 +90,14 @@ const Contact = () => {
                         <p className="error-msg">{errors.message && 'Please enter in a message!'}</p>
 
                         <button type="submit" value="Submit" id="sub">Submit</button>
+
                     </form>
                 </fieldset>
             </div>
+            {/* Passing testimonial state to child component */}
             <Testimonial data={testimonial} />
         </div >
     )
-
-
 }
 
 export default Contact;
