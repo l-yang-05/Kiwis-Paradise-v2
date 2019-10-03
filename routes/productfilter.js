@@ -4,9 +4,9 @@ const mysql = require('mysql')
 
 // Connects to mysql db to server
 const connection = mysql.createConnection({
-    host: "localhost",
+    host: process.env.host,
     port: 3306,
-    user: "root",
+    user: process.env.user,
     password: process.env.MYPASSWORD,
     database: "ecom_db"
 })
