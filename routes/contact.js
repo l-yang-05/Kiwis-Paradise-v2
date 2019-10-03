@@ -17,7 +17,7 @@ connection.connect((err) => {
 
 // Defining api route for /api/contacts
 router.get('/contacts', (req, res) => {
-    const sqlQuery = "SELECT * FROM ecom_db.Contacts ORDER BY RAND() LIMIT 3"
+    const sqlQuery = "SELECT * FROM ecom_db.Contacts"
     connection.query(sqlQuery, (err, data) => {
         if (err) throw new Error(`${req.statusCode}: Page did not load properly`)
         res.json(data)

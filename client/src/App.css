@@ -312,7 +312,7 @@ textarea {
 
 .test-container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
@@ -323,12 +323,13 @@ textarea {
   display: flex;
   flex-direction: column;
   background-color: snow;
-  width:290px;
+  width:100%;
   height: 150px;
   border-radius: 20px;
   padding: 10px;
   margin: 5px;
   box-shadow: pink 5px 5px 5px;
+  border: 3px salmon solid;
 }
 
 .contact-name{
@@ -454,10 +455,6 @@ svg:hover{
     width: 70%;
   }
 
-  .profile{
-    width: 215px;
-  }
-
 }
 
 @media only screen and (max-width: 425px){
@@ -481,9 +478,6 @@ svg:hover{
     grid-auto-columns: auto;
   }
 
-  .profile{
-    width:97%;
-  }
 
   .card-wrapper {
     display: grid !important;
