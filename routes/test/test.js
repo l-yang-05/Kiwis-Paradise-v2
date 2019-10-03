@@ -2,9 +2,7 @@
 require('dotenv').config()
 
 const chai = require('chai')
-const expect = chai.expect
 const chaiHttp = require('chai-http')
-const request = require('request')
 const app = require('../../server')
 
 chai.use(chaiHttp);
